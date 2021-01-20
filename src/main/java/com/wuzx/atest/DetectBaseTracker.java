@@ -1,5 +1,7 @@
 package com.wuzx.atest;
 
+import android.util.Log;
+
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 
@@ -7,7 +9,8 @@ public class DetectBaseTracker {
 
 
     public DetectBaseTracker(String cascadeName, int minFaceSize) {
-        nativeCreateObject(cascadeName,minFaceSize);
+        mNativeObj=nativeCreateObject(cascadeName,minFaceSize);
+        Log.d("WuZX","mNativeObj="+mNativeObj);
     }
     public void start() {
         nativeStart(mNativeObj);

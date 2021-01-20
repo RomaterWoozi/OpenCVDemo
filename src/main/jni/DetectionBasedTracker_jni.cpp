@@ -64,8 +64,8 @@ private:
 
 struct DetectorAgregator
 {
-    Ptr<CascadeDetectorAdapter> mainDetector;
-    Ptr<CascadeDetectorAdapter> trackingDetector;
+    cv::Ptr<CascadeDetectorAdapter> mainDetector;
+    cv::Ptr<CascadeDetectorAdapter> trackingDetector;
 
     cv::Ptr<DetectionBasedTracker> tracker;
     DetectorAgregator(cv::Ptr<CascadeDetectorAdapter>& _mainDetector, cv::Ptr<CascadeDetectorAdapter>& _trackingDetector):
