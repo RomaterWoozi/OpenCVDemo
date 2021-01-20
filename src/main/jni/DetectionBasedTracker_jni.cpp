@@ -90,13 +90,59 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeCreateObject(JNIEnv *env, jclass cla
                                                          jstring cascade_name, jint min_face_size) {
 
     LOGD("createObject");
-    const char* jnamestr
+    const char* jnamestr=env->GetStringUTFChars(cascade_name,NULL);
+    string stdFileName(jnamestr);
+    jlong result=0;
+    try {
+        Ptr<CascadeDetectorAdapter> mainDetector = makePtr<CascadeDetectorAdapter>(
+                makePtr<CascadeClassifier>(stdFileName));
+        Ptr<CascadeDetectorAdapter> trackingDetector = makePtr<CascadeDetectorAdapter>(
+                makePtr<CascadeClassifier>(stdFileName));
+        result = (jlong)new DetectorAgregator(mainDetector, trackingDetector);
+        if(min_face_size>0){
+            mainDetector->setMinObjectSize(Size(min_face_size,min_face_size));
+        }
+
+    }
+    catch (const Exception& exception) {
+        LOGD("nativeCreateObject caught cv::Exception: %s", exception.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, exception.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeCreateObject caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code of DetectionBasedTracker.nativeCreateObject()");
+        return 0;
+    }
+    return result;
 }
 
 JNIEXPORT void JNICALL
 Java_com_wuzx_atest_DetectBaseTracker_nativeStart(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeStart()
     LOGD("Start");
+    try
+    {
+        ((DetectorAgregator*)thiz)->tracker->run();
+    }
+    catch(const cv::Exception& e)
+    {
+        LOGD("nativeStart caught cv::Exception: %s", e.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, e.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeStart caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code of DetectionBasedTracker.nativeStart()");
+    }
 }
 
 
@@ -104,13 +150,57 @@ JNIEXPORT void JNICALL
 Java_com_wuzx_atest_DetectBaseTracker_nativeDestroyObject(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeDestroyObject()
     LOGD("DestroyObject");
+    try
+    {
+        if(thiz != 0)
+        {
+            ((DetectorAgregator*)thiz)->tracker->stop();
+            delete (DetectorAgregator*)thiz;
+        }
+    }
+    catch(const cv::Exception& e)
+    {
+        LOGD("nativeestroyObject caught cv::Exception: %s", e.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, e.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeDestroyObject caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code of DetectionBasedTracker.nativeDestroyObject()");
+    }
 }
 
 JNIEXPORT void JNICALL
 Java_com_wuzx_atest_DetectBaseTracker_nativeSetFaceSize(JNIEnv *env, jclass clazz, jlong thiz,
-                                                        jint size) {
+                                                        jint faceSize) {
     // TODO: implement nativeSetFaceSize()
     LOGD("SetFaceSize");
+    try
+    {
+        if (faceSize > 0)
+        {
+            ((DetectorAgregator*)thiz)->mainDetector->setMinObjectSize(Size(faceSize, faceSize));
+            //((DetectorAgregator*)thiz)->trackingDetector->setMinObjectSize(Size(faceSize, faceSize));
+        }
+    }
+    catch(const cv::Exception& e)
+    {
+        LOGD("nativeStop caught cv::Exception: %s", e.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, e.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeSetFaceSize caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code of DetectionBasedTracker.nativeSetFaceSize()");
+    }
 }
 
 
@@ -118,6 +208,24 @@ JNIEXPORT void JNICALL
 Java_com_wuzx_atest_DetectBaseTracker_nativeStop(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeStop()
     LOGD("Stop");
+    try
+    {
+        ((DetectorAgregator*)thiz)->tracker->stop();
+    }
+    catch(const cv::Exception& e)
+    {
+        LOGD("nativeStop caught cv::Exception: %s", e.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, e.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeStop caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code of DetectionBasedTracker.nativeStop()");
+    }
 }
 
 JNIEXPORT void JNICALL
@@ -125,6 +233,27 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeDetect(JNIEnv *env, jclass clazz, jl
                                                    jlong input_image, jlong faces) {
     // TODO: implement nativeDetect
     LOGD("Detect");
+    try
+    {
+        vector<Rect> RectFaces;
+        ((DetectorAgregator*)thiz)->tracker->process(*((Mat*)input_image));
+        ((DetectorAgregator*)thiz)->tracker->getObjects(RectFaces);
+        *((Mat*)faces) = Mat(RectFaces, true);
+    }
+    catch(const cv::Exception& e)
+    {
+        LOGD("nativeCreateObject caught cv::Exception: %s", e.what());
+        jclass je = env->FindClass("org/opencv/core/CvException");
+        if(!je)
+            je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, e.what());
+    }
+    catch (...)
+    {
+        LOGD("nativeDetect caught unknown exception");
+        jclass je = env->FindClass("java/lang/Exception");
+        env->ThrowNew(je, "Unknown exception in JNI code DetectionBasedTracker.nativeDetect()");
+    }
 }
 
 
