@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Dowload Sample</string>
+    <string name="runtime_permissions_error">Cannot continue. Please grant runtime permissions</string>
+    <string name="test_category_other">Other</string>
+    <string name="title_version">Android Test %1$s</string>
+    <string name="clear">Clear</string>
+    <string name="view">View</string>
+    <string name="export">Export</string>
+    <string name="media_player">Media Player</string>
+    <string name="face_detect">Face Detect</string>
+    <!-- A list of fully-qualified test classes that should not be run. -->
+    <string-array name="disabled_tests" />
+</resources>
