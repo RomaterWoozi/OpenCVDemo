@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_size"
+        tools:context="com.wuzx.atest.tts.TtsActivity"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:background="@drawable/bg_edit_text"
+            android:hint="input text"
+            android:padding="8dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <Button
+                android:id="@+id/button_text_to_speech"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="text to speech"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:background="@drawable/btn_bg_selector"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</layout>

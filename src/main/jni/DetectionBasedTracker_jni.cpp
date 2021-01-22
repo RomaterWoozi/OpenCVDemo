@@ -257,7 +257,15 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeDetect(JNIEnv *env, jclass clazz, jl
 }
 
 
+JNIEXPORT void JNICALL
+Java_com_wuzx_atest_DetectBaseTracker_nativeCameraRotate(JNIEnv *env, jclass clazz, jint angle) {
+    // TODO: implement nativeCameraRotate()
+
+}
+
+
 #ifdef __cplusplus
 }
 #endif
+
 

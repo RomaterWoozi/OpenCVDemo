@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="text_dark">#101010</color>
+    <color name="text_light">#201E1E</color>
+
+
+    <color name="btn_update_normal">#007CFD</color>
+    <color name="btn_update_press">#B1D7FE</color>
+    <color name="transparent">#FFFFFF</color>
+    <color name="water_waves_color">#4455BBA7</color>
+    <color name="font_wave_color">#7EC12D</color>
+    <color name="behind_wave_color">#FFBBF0F4</color>
 </resources>

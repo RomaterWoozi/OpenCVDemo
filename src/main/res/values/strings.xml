@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Dowload Sample</string>
     <string name="runtime_permissions_error">Cannot continue. Please grant runtime permissions</string>
     <string name="test_category_other">Other</string>
@@ -8,6 +8,13 @@
     <string name="export">Export</string>
     <string name="media_player">Media Player</string>
     <string name="face_detect">Face Detect</string>
+    <string name="media_controller">Media Controller</string>
+    <string name="media">Media</string>
+    <string name="search_media">Search</string>
+    <string name="search_hint">Query</string>
+    <string name="default_uri" />
+    <string name="media_browse_tree_header">App-provided MediaItems</string>
+    <string name="media_tts">TTS Test</string>
     <!-- A list of fully-qualified test classes that should not be run. -->
     <string-array name="disabled_tests" />
 </resources>

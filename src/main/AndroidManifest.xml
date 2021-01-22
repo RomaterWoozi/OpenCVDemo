@@ -2,15 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wuzx.atest">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <supports-screens android:resizeable="true"
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="true"
-        android:anyDensity="true" />
+<supports-screens
+    android:resizeable="true"
+    android:smallScreens="true"
+    android:normalScreens="true"
+    android:largeScreens="true"
+    android:anyDensity="true" />
 
     <uses-permission android:name="android.permission.CAMERA"/>
 
@@ -34,18 +35,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FdActivity"  android:label="@string/face_detect">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.wuzx.intent.category.MANUAL_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MediaAppControllerActivity" android:label="@string/media_controller">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.wuzx.intent.category.MANUAL_TEST" />
+            </intent-filter>
+            <meta-data android:name="test_category" android:value="@string/media"></meta-data>
+        </activity>
         <activity android:name=".MediaPlayerActivity"  android:label="@string/media_player">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.wuzx.intent.category.MANUAL_TEST" />
             </intent-filter>
+            <meta-data android:name="test_category" android:value="@string/media"></meta-data>
         </activity>
-        <activity android:name=".FdActivity"  android:label="@string/face_detect">
+        <activity android:name=".tts.TtsActivity"   android:label="@string/media_tts">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.wuzx.intent.category.MANUAL_TEST" />
             </intent-filter>
+            <meta-data android:name="test_category" android:value="@string/media"></meta-data>
         </activity>
 
     </application>
