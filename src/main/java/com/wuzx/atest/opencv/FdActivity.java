@@ -1,4 +1,4 @@
-package com.wuzx.atest;
+package com.wuzx.atest.opencv;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+
+import com.wuzx.atest.R;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraActivity;
@@ -60,10 +62,8 @@ public class FdActivity extends CameraActivity implements CameraBridgeViewBase.C
                 case LoaderCallbackInterface.SUCCESS:
                 {
                     Log.i(TAG, "OpenCV loaded successfully");
-
                     // Load native library after(!) OpenCV initialization
                     System.loadLibrary("detection_based_tracker");
-
                     try {
                         // load cascade file from application resources
                         InputStream is = getResources().openRawResource(R.raw.lbpcascade_frontalface);

@@ -1,4 +1,4 @@
-package com.wuzx.atest;
+package com.wuzx.atest.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -11,7 +11,7 @@ public class Version {
 
     private static final String UNKNOWN = "unknown";
 
-    static String getVersionName(Context context) {
+    public static String getVersionName(Context context) {
         return getPackageInfo(context).versionName;
     }
 

@@ -1,4 +1,4 @@
-package com.wuzx.atest;
+package com.wuzx.atest.base;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
 
+import com.wuzx.atest.R;
 import com.wuzx.atest.adapters.TestListAdapter;
 import com.wuzx.atest.adapters.TestListAdapter.TestListItem;
 

@@ -1,4 +1,4 @@
-package com.wuzx.atest;
+package com.wuzx.atest.opencv;
 
 import android.util.Log;
 
@@ -37,8 +37,6 @@ public class DetectBaseTracker {
 
     private long mNativeObj = 0;
 
-    
-    private static native void nativeCameraRotate(int angle);
     private static native long nativeCreateObject(String cascadeName, int minFaceSize);
     private static native void nativeDestroyObject(long thiz);
     private static native void nativeStart(long thiz);

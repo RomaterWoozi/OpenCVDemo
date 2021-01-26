@@ -2,7 +2,7 @@ package com.wuzx.atest.tasks;
 
 import android.os.AsyncTask;
 
-import com.wuzx.atest.MediaAppDetails;
+import com.wuzx.atest.media.MediaAppDetails;
 
 import java.util.List;
 

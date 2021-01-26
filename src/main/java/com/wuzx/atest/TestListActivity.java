@@ -11,6 +11,8 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.wuzx.atest.adapters.ManifestTestListAdapter;
+import com.wuzx.atest.base.AbstractTestListActivity;
+import com.wuzx.atest.utils.Version;
 
 
 public class TestListActivity extends AbstractTestListActivity implements View.OnClickListener{
@@ -76,7 +78,6 @@ public class TestListActivity extends AbstractTestListActivity implements View.O
             footer.findViewById(R.id.clear).setOnClickListener(this);
             footer.findViewById(R.id.view).setOnClickListener(this);
             footer.findViewById(R.id.export).setOnClickListener(this);
-
 //            getListView().addFooterView(footer);
         }
 

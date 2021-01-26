@@ -1,4 +1,4 @@
-package com.wuzx.atest;
+package com.wuzx.atest.media;
 
 import android.os.Bundle;
 

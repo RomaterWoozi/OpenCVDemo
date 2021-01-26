@@ -11,7 +11,6 @@
 #include <android/log.h>
 
 
-
 #define LOG_TAG "DetectBaseTracker"
 #define LOGD(...) ((void)__android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__))
 
@@ -86,7 +85,7 @@ extern "C" {
 
 
 JNIEXPORT jlong JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeCreateObject(JNIEnv *env, jclass clazz,
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeCreateObject(JNIEnv *env, jclass clazz,
                                                          jstring cascade_name, jint min_face_size) {
 
     LOGD("createObject");
@@ -122,7 +121,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeCreateObject(JNIEnv *env, jclass cla
 }
 
 JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeStart(JNIEnv *env, jclass clazz, jlong thiz) {
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeStart(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeStart()
     LOGD("Start");
     try
@@ -147,7 +146,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeStart(JNIEnv *env, jclass clazz, jlo
 
 
 JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeDestroyObject(JNIEnv *env, jclass clazz, jlong thiz) {
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeDestroyObject(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeDestroyObject()
     LOGD("DestroyObject");
     try
@@ -175,7 +174,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeDestroyObject(JNIEnv *env, jclass cl
 }
 
 JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeSetFaceSize(JNIEnv *env, jclass clazz, jlong thiz,
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeSetFaceSize(JNIEnv *env, jclass clazz, jlong thiz,
                                                         jint faceSize) {
     // TODO: implement nativeSetFaceSize()
     LOGD("SetFaceSize");
@@ -189,7 +188,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeSetFaceSize(JNIEnv *env, jclass claz
     }
     catch(const cv::Exception& e)
     {
-        LOGD("nativeStop caught cv::Exception: %s", e.what());
+        LOGD("nativeSetFaceSize caught cv::Exception: %s", e.what());
         jclass je = env->FindClass("org/opencv/core/CvException");
         if(!je)
             je = env->FindClass("java/lang/Exception");
@@ -205,7 +204,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeSetFaceSize(JNIEnv *env, jclass claz
 
 
 JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeStop(JNIEnv *env, jclass clazz, jlong thiz) {
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeStop(JNIEnv *env, jclass clazz, jlong thiz) {
     // TODO: implement nativeStop()
     LOGD("Stop");
     try
@@ -229,7 +228,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeStop(JNIEnv *env, jclass clazz, jlon
 }
 
 JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeDetect(JNIEnv *env, jclass clazz, jlong thiz,
+Java_com_wuzx_atest_opencv_DetectBaseTracker_nativeDetect(JNIEnv *env, jclass clazz, jlong thiz,
                                                    jlong input_image, jlong faces) {
     // TODO: implement nativeDetect
     LOGD("Detect");
@@ -257,15 +256,7 @@ Java_com_wuzx_atest_DetectBaseTracker_nativeDetect(JNIEnv *env, jclass clazz, jl
 }
 
 
-JNIEXPORT void JNICALL
-Java_com_wuzx_atest_DetectBaseTracker_nativeCameraRotate(JNIEnv *env, jclass clazz, jint angle) {
-    // TODO: implement nativeCameraRotate()
-
-}
-
 
 #ifdef __cplusplus
 }
 #endif
-
-
