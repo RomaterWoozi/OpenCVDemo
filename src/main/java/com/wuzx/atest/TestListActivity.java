@@ -15,6 +15,7 @@ import com.wuzx.atest.base.AbstractTestListActivity;
 import com.wuzx.atest.utils.Version;
 
 
+
 public class TestListActivity extends AbstractTestListActivity implements View.OnClickListener{
     private static final int TEST_PERMISSION_REQUEST = 1;
 
