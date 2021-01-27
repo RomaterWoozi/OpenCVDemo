@@ -28,4 +28,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="validation">login validation</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_imageitem_list">ImageItems</string>
+    <string name="title_imageitem_detail">ImageItem Detail</string>
 </resources>

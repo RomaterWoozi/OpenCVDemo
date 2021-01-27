@@ -13,4 +13,9 @@
     <color name="water_waves_color">#4455BBA7</color>
     <color name="font_wave_color">#7EC12D</color>
     <color name="behind_wave_color">#FFBBF0F4</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wuzx.atest">
+
     <!-- 网络和外部存储读写权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -20,7 +21,6 @@
         android:name="android.hardware.camera.front.autofocus"
         android:required="false" /> <!-- 录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -33,14 +33,42 @@
         android:smallScreens="true" />
 
     <application
+        android:name=".TestApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".TestApplication"
         android:networkSecurityConfig="@xml/networkconfig"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JchSmart">
+        <activity
+            android:name=".login.ImageItemListActivity"
+            android:label="@string/title_imageitem_list"
+            android:theme="@style/Theme.JchSmart.NoActionBar"></activity>
+        <activity
+            android:name=".login.ImageItemDetailActivity"
+            android:label="@string/title_imageitem_detail"
+            android:parentActivityName=".login.ImageItemListActivity"
+            android:theme="@style/Theme.JchSmart.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wuzx.atest.login.ImageItemListActivity" />
+        </activity>
+        <activity
+            android:name=".login.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/Theme.JchSmart.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.wuzx.intent.category.MANUAL_TEST" />
+            </intent-filter>
+
+            <meta-data
+                android:name="test_category"
+                android:value="@string/validation" />
+        </activity>
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login">

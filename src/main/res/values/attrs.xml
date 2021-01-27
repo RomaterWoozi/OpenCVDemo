@@ -8,5 +8,9 @@
         <attr name="diration" format="integer"></attr>
         <attr name="waveView_boatBitmap" format="reference"></attr>
     </declare-styleable>
+    <declare-styleable name="FullscreenAttrs">
+        <attr name="fullscreenBackgroundColor" format="color" />
+        <attr name="fullscreenTextColor" format="color" />
+    </declare-styleable>
 
 </resources>
