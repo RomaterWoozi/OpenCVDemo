@@ -64,7 +64,7 @@ public class ImageItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyImageItemRecyclerViewAdapter(DummyContent.ITEMS));
+            recyclerView.setAdapter(new ImageItemRecyclerViewAdapter(DummyContent.ITEMS));
         }
         return view;
     }

@@ -48,6 +48,13 @@ android {
         }
 
     }
+    sourceSets {
+        main {
+            jni {
+                srcDirs 'src\\main\\jni', 'src\\main\\jni\\include'
+            }
+        }
+    }
 }
 
 dependencies {

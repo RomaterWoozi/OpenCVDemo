@@ -12,12 +12,16 @@ import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.wuzx.atest.exception.CrashException;
 
 public class TestApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+        //设置系统默异常处理类
+        CrashException crashException=new CrashException();
+        crashException.init(this);
         initLogger();
         initNetworking();
     }
