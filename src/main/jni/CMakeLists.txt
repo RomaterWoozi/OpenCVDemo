@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.6.0)
+##OpenCV
 set(target detection_based_tracker)
 project(${target} CXX)
 
@@ -9,15 +10,15 @@ find_package(OpenCV REQUIRED COMPONENTS ${ANDROID_OPENCV_COMPONENTS})
 file(GLOB srcs *.cpp *.c)
 file(GLOB hdrs *.hpp *.h)
 
-include_directories("./include")
+
 include_directories("${CMAKE_CURRENT_LIST_DIR}")
 message(STATUS "CURRENT_DIR=${CMAKE_CURRENT_LIST_DIR}")
 add_library(${target} SHARED ${srcs} ${hdrs})
 target_link_libraries(${target} ${ANDROID_OPENCV_COMPONENTS})
+
+include_directories("./include")
 # 声明文件地址
 set(distribution_DIR ./libs)
-
-
 #添加libavcodec库 SHARED类型 IMPORTED 引入
 add_library(libavcodec
         SHARED
@@ -45,3 +46,24 @@ add_library(libswresample
 set_target_properties(libswresample
         PROPERTIES IMPORTED_LOCATION
         ${distribution_DIR}/${ANDROID_ABI}/libswresample.so)
+
+
+#添加libavformat库 SHARED类型 IMPORTED 引入
+add_library(libavformat
+        SHARED
+        IMPORTED)
+# 设置 库属性IMPORTED_LOCATION
+set_target_properties(libavformat
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavformat.so)
+
+#添加libavfilter库 SHARED类型 IMPORTED 引入
+add_library(libavfilter
+        SHARED
+        IMPORTED)
+# 设置 库属性IMPORTED_LOCATION
+set_target_properties(libavfilter
+        PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/${ANDROID_ABI}/libavfilter.so)
+
+

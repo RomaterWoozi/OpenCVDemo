@@ -12,7 +12,13 @@
 
 #ifndef JCHSMART_FFMPEG_HELLOWORD_H
 #define JCHSMART_FFMPEG_HELLOWORD_H
-
+#include <stdio.h>
+#ifdef WUZX
+#include <android/log.h>
+#define LOGE(format, ...)  __android_log_print(ANDROID_LOG_ERROR, "(>_<)", format, ##__VA_ARGS__)
+#else
+#define LOGE(format, ...)  printf("(>_<) " format "\n", ##__VA_ARGS__)
+#endif
 
 class ffmpeg_helloword {
 

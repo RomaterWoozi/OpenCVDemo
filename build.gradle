@@ -17,12 +17,18 @@ android {
         versionCode 1
         versionName "1.0"
 
+        ndk{
+            abiFilters "armeabi-v7a","arm64-v8a","x86_64"
+        }
+
         externalNativeBuild {
             cmake {
                 arguments "-DOpenCV_DIR=" + project(':sdk').projectDir + "/native/jni",
                         "-DANDROID_TOOLCHAIN=clang",
                         "-DANDROID_STL=c++_shared"
                 targets "detection_based_tracker"
+
+                cppFlags "-frtti -fexceptions"
             }
         }
 
@@ -40,12 +46,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     externalNativeBuild {
-//        ndkBuild {
-//            path file('src/main/jni/Android.mk')
-//        }
-        cmake{
-            path file('src/main/jni/CMakeLists.txt')
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
         }
+
+//        cmake{
+//            path file('src/main/jni/CMakeLists.txt')
+//        }
 
     }
     sourceSets {

@@ -33,4 +33,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_imageitem_list">ImageItems</string>
     <string name="title_imageitem_detail">ImageItem Detail</string>
+    <string name="media_ffmpeg">FFmpegTest</string>
 </resources>
